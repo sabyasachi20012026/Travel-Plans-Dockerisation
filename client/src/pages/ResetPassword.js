@@ -12,6 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 import LockResetIcon from "@mui/icons-material/LockReset";
+import api from "../services/api";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
@@ -32,26 +33,13 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch(`/api/auth/reset-password/${token}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password }),
-      });
+      const response = await api.put(`/auth/reset-password/${token}`, { password });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage(data.msg);
-        setError(null);
-        setTimeout(() => navigate("/login"), 3000); // Redirect to login after 3s
-      } else {
-        setError(data.msg || "Something went wrong");
-        setMessage(null);
-      }
+      setMessage(response.data.msg);
+      setError(null);
+      setTimeout(() => navigate("/login"), 3000); // Redirect to login after 3s
     } catch (err) {
-      setError("Server error");
+      setError(err.response?.data?.msg || "Server error");
       setMessage(null);
     }
   };

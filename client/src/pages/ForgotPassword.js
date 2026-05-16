@@ -12,6 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import api from "../services/api";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -23,25 +24,11 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage(data.data);
-        setError(null);
-      } else {
-        setError(data.msg || "Something went wrong");
-        setMessage(null);
-      }
+      const response = await api.post("/auth/forgot-password", { email });
+      setMessage(response.data.data || "Email sent");
+      setError(null);
     } catch (err) {
-      setError("Server error");
+      setError(err.response?.data?.msg || "Server error");
       setMessage(null);
     }
   };
