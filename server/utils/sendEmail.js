@@ -11,9 +11,7 @@ const parseBoolean = (value, fallback = false) => {
 };
 
 const buildTransporter = () => {
-  const service = (
-    process.env.EMAIL_SERVICE || process.env.SMTP_SERVICE || ""
-  )
+  const service = (process.env.EMAIL_SERVICE || process.env.SMTP_SERVICE || "")
     .trim()
     .toLowerCase();
   const hostFromEnv = process.env.EMAIL_HOST || process.env.SMTP_HOST;
@@ -28,7 +26,10 @@ const buildTransporter = () => {
 
   let host = hostFromEnv;
   if (!host) {
-    if (service === "gmail" || (!service && user.toLowerCase().includes("gmail.com"))) {
+    if (
+      service === "gmail" ||
+      (!service && user.toLowerCase().includes("gmail.com"))
+    ) {
       host = "smtp.gmail.com";
     } else if (service === "resend") {
       host = "smtp.resend.com";
@@ -67,8 +68,12 @@ const getTransporter = () => {
 const sendEmail = async (options) => {
   const activeTransporter = getTransporter();
   const fromEmail =
-    process.env.EMAIL_FROM || process.env.FROM_EMAIL || process.env.EMAIL_USER || process.env.SMTP_USER;
-  const fromName = process.env.EMAIL_FROM_NAME || process.env.FROM_NAME || "PackGo";
+    process.env.EMAIL_FROM ||
+    process.env.FROM_EMAIL ||
+    process.env.EMAIL_USER ||
+    process.env.SMTP_USER;
+  const fromName =
+    process.env.EMAIL_FROM_NAME || process.env.FROM_NAME || "PackGo";
 
   const message = {
     from: `${fromName} <${fromEmail}>`,
