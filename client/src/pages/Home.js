@@ -373,14 +373,14 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 20);
-  };
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleAddTrip = (dest) => {
     if (!isAuthenticated) {
