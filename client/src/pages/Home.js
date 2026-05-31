@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
@@ -361,6 +361,7 @@ const Home = () => {
   const [travellers, setTravellers] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const checkInRef = useRef(null);
 
   useEffect(() => {
     api
@@ -632,10 +633,12 @@ const Home = () => {
 
             <div style={{ position: "relative" }}>
               <input
+                ref={checkInRef}
                 className="wander-sf-val"
                 type="date"
                 value={checkIn}
                 onChange={(e) => setCheckIn(e.target.value)}
+                onClick={() => checkInRef.current?.showPicker()}
                 style={{ paddingRight: "35px" }}
               />
 
