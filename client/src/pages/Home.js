@@ -5,6 +5,7 @@ import "./Home.css";
 import api from "../services/api";
 import { addTrip } from "../redux/actions/tripActions";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import FAQSection from "../components/FAQSection";
 import RecentlyViewed from "../components/RecentlyViewed";
 import { addRecentlyViewed } from "../utils/recentlyViewed";
 
@@ -937,6 +938,7 @@ const Home = () => {
           ))}
         </div>
       </section>
+      <FAQSection />
 
       {/* ═══ TESTIMONIAL ═══ */}
       <section className="wander-testi-section" id="wander-testimonials">
