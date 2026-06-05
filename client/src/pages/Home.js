@@ -929,14 +929,13 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ═══ FOOTER ═══ */}
+      {/* ═══ FOOTER (UPDATED with <Link> for routing) ═══ */}
       <footer className="wander-footer">
         <div className="wander-footer-top">
           <div className="wander-footer-brand">
             <Link to="/" className="wander-footer-logo">
               Pack<span>Go</span>
             </Link>
-
             <p>
               Discover breathtaking destinations, curated travel experiences,
               and unforgettable journeys with PackGo Travel.
@@ -953,20 +952,16 @@ const Home = () => {
 
             <div className="wander-footer-col">
               <h4>Company</h4>
-
-              {/* Add your routes here if they exist */}
               <Link to="/about">About</Link>
               <Link to="/careers">Careers</Link>
-
-              {/* Contact Page Link */}
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">Contact</Link>
             </div>
 
             <div className="wander-footer-col">
               <h4>Support</h4>
-              <Link to="/help-center">Help Center</Link>
-              <Link to="/privacy-policy">Privacy Policy</Link>
-              <Link to="/terms-and-conditions">Terms & Conditions</Link>
+              <Link to="/help">Help Center</Link>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms & Conditions</Link>
             </div>
           </div>
         </div>
@@ -975,7 +970,6 @@ const Home = () => {
           <div className="wander-footer-copy">
             © {new Date().getFullYear()} PackGo Travel Co. All rights reserved.
           </div>
-
           <div className="wander-footer-socials">
             <a href="/" aria-label="Facebook">
               <FaFacebook />
