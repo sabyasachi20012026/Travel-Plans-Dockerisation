@@ -8,7 +8,6 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import RecentlyViewed from "../components/RecentlyViewed";
 import { addRecentlyViewed } from "../utils/recentlyViewed";
 
-
 /* ── REVIEWS DATA FOR CAROUSEL ────────────────────────────── */
 const REVIEWS = [
   {
@@ -40,7 +39,6 @@ const REVIEWS = [
     loc: "London, UK",
   },
 ];
-
 
 /* ── SVG SCENES ─────────────────────────────────────────────── */
 const SceneIceland = () => (
